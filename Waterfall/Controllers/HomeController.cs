@@ -40,7 +40,7 @@ namespace Waterfall.Controllers
                 data = JsonConvert.DeserializeObject<List<Picture>>(sData);
             }
 
-            if (!wp.LoadOnce) 
+            if (!wp.ReqOnce) 
             {
                 data = data.Skip(wp.Index).Take(wp.Total).ToList();
             }

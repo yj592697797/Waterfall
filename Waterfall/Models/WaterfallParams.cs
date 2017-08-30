@@ -9,6 +9,6 @@ namespace Waterfall.Models
     {
         public int Index { get; set; }
         public int Total { get; set; }
-        public bool LoadOnce { get; set; }
+        public bool ReqOnce { get; set; }
     }
 }

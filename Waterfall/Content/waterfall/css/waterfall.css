@@ -4,7 +4,7 @@
 .water {
     position: absolute;
     animation: water-fade-in;
-    animation-duration: 1s;
+    animation-duration: .5s;
 }
 
 @keyframes water-fade-in {

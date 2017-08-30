@@ -8,21 +8,23 @@
             'waterClass': 'water',                      //水柱的css
             'space': 5,                                 //水柱的间隔
             'flowing': function (arg1, arg2) { },       //加载中执行 arg1,水柱的jquery对象  arg2,一条数据
-            'flowed': function(arg) { },                //加载后执行 arg,本次加载的数量
-            'loadOnce': false,                           //true:从服务器获取所有数据后，每次只加载一部分；false:每次都需要从服务器获取需要加载的数据
+            'flowed': function (arg) { },               //加载后执行 arg,本次加载的数量
+            'loadOnce': false,                          //一次性显示所有数据
+            'reqOnce': false,                           //true:从服务器获取所有数据后，每次只加载一部分；false:每次都需要从服务器获取需要加载的数据
             'url': '',                                  //请求数据的url
             'aType': 'GET',                             //请求数据的方式 GET  POST
-            'triggerY': 200,
+            'triggerY': 200,                            
             'customerParams': {}                        //请求数据时的用户自定义参数
         };
         this.options = $.extend({}, this.defaults, opt);
+        if (this.options.loadOnce) this.options.reqOnce = true;
         this.lastRowWaters = [];
         this.data = [];
         this.hasLoadData = false;
         this.remoteParams = {
             index: 0,
             total: this.options.loadRows * this.options.column,
-            loadOnce: this.options.loadOnce
+            reqOnce: this.options.reqOnce
         };
     };
 
@@ -59,7 +61,7 @@
                 options = waterfall.options,
                 callback = waterfall._flowing;
 
-            if (options.loadOnce && waterfall.hasLoadData) {
+            if (options.reqOnce && waterfall.hasLoadData) {
                 callback.apply(waterfall, arguments);
             } else {
                 var params = $.extend({}, waterfall.remoteParams, options.customerParams);
@@ -139,10 +141,13 @@
                 $waters = waterfall.$element.find('.' + options.waterClass),
                 planLoadCount = 0,
                 loadCount = 0;
-
-            if (!rows) rows = options.loadRows;
-            planLoadCount = rows * options.column;
-
+            if (options.loadOnce) {
+                planLoadCount = waterfall.data.length;
+            } else {
+                if (!rows) rows = options.loadRows;
+                planLoadCount = rows * options.column;
+            }
+            
             for (var i = 0; i < planLoadCount; i++) {
                 if (!Array.isArray(waterfall.data) || waterfall.data.length <= 0) return false;
                 var waterData = waterfall.data.shift();
