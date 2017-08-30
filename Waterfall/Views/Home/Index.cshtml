@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+<link href="~/Content/waterfall/css/waterfall.css" rel="stylesheet" />
+<script src="~/Content/waterfall/js/waterfall.js"></script>
+
+<div class="row" id="waterfall"></div>
+
+<script>
+    $(function () {
+        var customCss = function () {
+            var heights = [100, 120, 130, 140, 150, 160];
+            var colors = ['#9ECE5A', '#569BD5', '#EA4A7F', '#D2CF6C', '#C9E391', '#91BEE3'];
+            var index = parseInt(Math.random() * 4, 10);
+            return {
+                'height': heights[index],
+                'background-color': colors[index]
+            };
+        }
+
+        var waterfall = $('#waterfall').waterfall({
+            //'url': '/Content/waterfall/pictures.json',
+            'url': '/Home/GetPictures',
+            'loadOnce': false,
+            'column': 8,
+            'startRows': 10,
+            'flowing': function ($water, data) {
+                var css = customCss();
+                $water.css('height', css['height']);
+                //$water.css('background-color', css['background-color']);
+                $water.css('background-color', data.bgColor);
+            }
+        }).create();
+    });
+
+</script>
+
+
+

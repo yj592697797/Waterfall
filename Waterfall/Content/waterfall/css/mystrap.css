@@ -1,0 +1,108 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+* {
+    box-sizing: border-box;
+}
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 1190px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.row {
+    position: relative;
+    margin-left: -15px;
+    margin-right: -15px;
+    width: 100%;
+    zoom: 1;
+}
+.row:after, .row:before {
+    display: table; 
+    content: ""; 
+    clear: both;
+}
+.clear {
+    clear: both;
+}
+.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10
+, .col-11, .col-12, .col-13, .col-14, .col-15, .col-16, .col-17, .col-18, .col-19
+, .col-20, .col-21, .col-22, .col-23, .col-24 {
+    padding-left: 10px;
+    padding-right: 10px;
+    float: left;
+}
+.col-1 {
+    width: 4.166666%;
+}
+.col-2 {
+    width: 8.333332%;
+}
+.col-3 {
+    width: 12.499998%;
+}
+.col-4 {
+    width: 16.666664%;
+}
+.col-5 {
+    width: 20.83333%;
+}
+.col-6 {
+    width: 24.999996%;
+}
+.col-7 {
+    width: 29.166662%;
+}
+.col-8 {
+    width: 33.333328%;
+}
+.col-9 {
+    width: 37.499994%;
+}
+.col-10 {
+    width: 41.66666%;
+}
+.col-11 {
+    width: 45.833326%;
+}
+.col-12 {
+    width: 49.999992%;
+}
+.col-13 {
+    width: 54.166658%;
+}
+.col-14 {
+    width: 58.333324%;
+}
+.col-15 {
+    width: 62.49999%;
+}
+.col-16 {
+    width: 66.666656%;
+}
+.col-17 {
+    width: 70.833322%;
+}
+.col-18 {
+    width: 74.999988%;
+}
+.col-19 {
+    width: 79.166654%;
+}
+.col-20 {
+    width: 83.33332%;
+}
+.col-21 {
+    width: 87.499986%;
+}
+.col-22 {
+    width: 91.666652%;
+}
+.col-23 {
+    width: 95.833318%;
+}
+.col-24 {
+    width: 100%;
+}

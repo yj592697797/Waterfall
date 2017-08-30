@@ -1,0 +1,13 @@
+﻿body {
+}
+
+.water {
+    position: absolute;
+    animation: water-fade-in;
+    animation-duration: 1s;
+}
+
+@keyframes water-fade-in {
+  0% { opacity: .1; }
+  100% { opacity: 1}
+}
